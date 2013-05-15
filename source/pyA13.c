@@ -33,50 +33,38 @@ static PyObject *per;
 static PyObject *high;
 static PyObject *low;
 
-#define PIN4    SUNXI_GPB(0)
-#define PIN5    SUNXI_GPB(1)
-#define PIN6    SUNXI_GPB(2)
-#define PIN7    SUNXI_GPB(3)
-#define PIN8    SUNXI_GPB(4)
-#define PIN9    SUNXI_GPB(10)
-#define PIN10   SUNXI_GPB(15)
-#define PIN11   SUNXI_GPB(16)
+#define PIN1    SUNXI_GPI(4)
+#define PIN3    SUNXI_GPI(5)
+#define PIN4    SUNXI_GPI(10)
+#define PIN5    SUNXI_GPI(6)
+#define PIN6    SUNXI_GPI(11)
+#define PIN7    SUNXI_GPI(7)
+#define PIN8    SUNXI_GPI(12)
+#define PIN9    SUNXI_GPI(8)
+#define PIN10   SUNXI_GPI(13)
+#define PIN11   SUNXI_GPI(9)
 
-#define PIN12   SUNXI_GPC(0)
-#define PIN13   SUNXI_GPC(1)
-#define PIN14   SUNXI_GPC(2)
-#define PIN15   SUNXI_GPC(3)
-#define PIN16   SUNXI_GPC(4)
-#define PIN17   SUNXI_GPC(5)
-#define PIN18   SUNXI_GPC(6)
-#define PIN19   SUNXI_GPC(7)
-#define PIN20   SUNXI_GPC(8)
-#define PIN21   SUNXI_GPC(9)
-#define PIN22   SUNXI_GPC(10)
-#define PIN23   SUNXI_GPC(11)
-#define PIN24   SUNXI_GPC(12)
-#define PIN25   SUNXI_GPC(13)
-#define PIN26   SUNXI_GPC(14)
-#define PIN27   SUNXI_GPC(15)
-#define PIN28   SUNXI_GPC(19)
+#define PIN14   SUNXI_GPI(3)
+#define PIN19   SUNXI_GPB(12)
+#define PIN21   SUNXI_GPB(8)
+#define PIN22   SUNXI_GPI(20)
+#define PIN23   SUNXI_GPB(7)
+#define PIN24   SUNXI_GPI(21)
+#define PIN25   SUNXI_GPB(6)
+#define PIN27   SUNXI_GPB(10)
+#define PIN28   SUNXI_GPI(14)
 
-#define PIN29   SUNXI_GPE(4)
-#define PIN30   SUNXI_GPE(5)
-#define PIN31   SUNXI_GPE(6)
-#define PIN32   SUNXI_GPE(7)
-#define PIN33   SUNXI_GPE(8)
-#define PIN34   SUNXI_GPE(9)
-#define PIN35   SUNXI_GPE(10)
-#define PIN36   SUNXI_GPE(11)
+#define PIN29   SUNXI_GPB(5)
+#define PIN30   SUNXI_GPI(15)
+#define PIN34   SUNXI_GPB(18)
+#define PIN36   SUNXI_GPB(19)
+#define PIN38   SUNXI_GPB(20)
+#define PIN40   SUNXI_GPB(21)
 
-#define PIN37   SUNXI_GPG(9)
-#define PIN38   SUNXI_GPG(10)
-#define PIN39   SUNXI_GPG(11)
-
-#define MISO    SUNXI_GPE(3)
-#define MOSI    SUNXI_GPE(2)
-#define SCK     SUNXI_GPE(1)
-#define CS      SUNXI_GPE(0)
+#define MISO    SUNXI_GPI(13)
+#define MOSI    SUNXI_GPI(12)
+#define SCK     SUNXI_GPI(11)
+#define CS      SUNXI_GPI(10)
 
 static int module_setup(void) {
     int result;
@@ -255,6 +243,8 @@ PyMODINIT_FUNC initA13_GPIO(void) {
 
 
 
+    PyModule_AddObject(module, "PIN1", Py_BuildValue("i", PIN1));
+    PyModule_AddObject(module, "PIN3", Py_BuildValue("i", PIN3));
     PyModule_AddObject(module, "PIN4", Py_BuildValue("i", PIN4));
     PyModule_AddObject(module, "PIN5", Py_BuildValue("i", PIN5));
     PyModule_AddObject(module, "PIN6", Py_BuildValue("i", PIN6));
@@ -263,34 +253,23 @@ PyMODINIT_FUNC initA13_GPIO(void) {
     PyModule_AddObject(module, "PIN9", Py_BuildValue("i", PIN9));
     PyModule_AddObject(module, "PIN10", Py_BuildValue("i", PIN10));
     PyModule_AddObject(module, "PIN11", Py_BuildValue("i", PIN11));
-    PyModule_AddObject(module, "PIN12", Py_BuildValue("i", PIN12));
-    PyModule_AddObject(module, "PIN13", Py_BuildValue("i", PIN13));
+
     PyModule_AddObject(module, "PIN14", Py_BuildValue("i", PIN14));
-    PyModule_AddObject(module, "PIN15", Py_BuildValue("i", PIN15));
-    PyModule_AddObject(module, "PIN16", Py_BuildValue("i", PIN16));
-    PyModule_AddObject(module, "PIN17", Py_BuildValue("i", PIN17));
-    PyModule_AddObject(module, "PIN18", Py_BuildValue("i", PIN18));
     PyModule_AddObject(module, "PIN19", Py_BuildValue("i", PIN19));
-    PyModule_AddObject(module, "PIN20", Py_BuildValue("i", PIN20));
     PyModule_AddObject(module, "PIN21", Py_BuildValue("i", PIN21));
     PyModule_AddObject(module, "PIN22", Py_BuildValue("i", PIN22));
     PyModule_AddObject(module, "PIN23", Py_BuildValue("i", PIN23));
     PyModule_AddObject(module, "PIN24", Py_BuildValue("i", PIN24));
     PyModule_AddObject(module, "PIN25", Py_BuildValue("i", PIN25));
-    PyModule_AddObject(module, "PIN26", Py_BuildValue("i", PIN26));
+
     PyModule_AddObject(module, "PIN27", Py_BuildValue("i", PIN27));
     PyModule_AddObject(module, "PIN28", Py_BuildValue("i", PIN28));
     PyModule_AddObject(module, "PIN29", Py_BuildValue("i", PIN29));
     PyModule_AddObject(module, "PIN30", Py_BuildValue("i", PIN30));
-    PyModule_AddObject(module, "PIN31", Py_BuildValue("i", PIN31));
-    PyModule_AddObject(module, "PIN32", Py_BuildValue("i", PIN32));
-    PyModule_AddObject(module, "PIN33", Py_BuildValue("i", PIN33));
+    
     PyModule_AddObject(module, "PIN34", Py_BuildValue("i", PIN34));
-    PyModule_AddObject(module, "PIN35", Py_BuildValue("i", PIN35));
     PyModule_AddObject(module, "PIN36", Py_BuildValue("i", PIN36));
-    PyModule_AddObject(module, "PIN37", Py_BuildValue("i", PIN37));
     PyModule_AddObject(module, "PIN38", Py_BuildValue("i", PIN38));
-    PyModule_AddObject(module, "PIN39", Py_BuildValue("i", PIN39));
     PyModule_AddObject(module, "MISO", Py_BuildValue("i", MISO));
     PyModule_AddObject(module, "MOSI", Py_BuildValue("i", MOSI));
     PyModule_AddObject(module, "SCK", Py_BuildValue("i", SCK));
